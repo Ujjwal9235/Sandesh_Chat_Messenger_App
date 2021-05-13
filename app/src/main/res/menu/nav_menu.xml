@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_new_message"
+        android:icon="@android:drawable/stat_notify_chat"
+        android:title="New Message"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/menu_sign_out"
+        android:icon="@drawable/common_full_open_on_phone"
+        android:title="Sign Out"
+        app:showAsAction="ifRoom" />
+
+
+</menu>
