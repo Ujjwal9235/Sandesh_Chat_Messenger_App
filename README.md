@@ -15,9 +15,8 @@ Database and cloud based Storage used - Firebase.
                   FirebaseAuth.
                   xwray Groupie.
 # Snapshots
-![Screenshot](Screenshot_1620975082.png)
-![Screenshot](Screenshot_1620975076.png)
-![Screenshot](Screenshot_1620975149.png)
-![Screenshot](Screenshot_1620975163.png)
-![Screenshot](Screenshot_1620975462.png)
+<img src="/Screenshot_1620975082.png" width="300" height="600">&nbsp;&nbsp;&nbsp;&nbsp;<img src="/Screenshot_1620975076.png" width="300" height="600">&nbsp;&nbsp;&nbsp;&nbsp;<img src="/Screenshot_1620979131.png" width="300" height="600">
+
+<img src="/Screenshot_1620975163.png" width="300" height="600">&nbsp;&nbsp;&nbsp;&nbsp;<img src="/Screenshot_1620975462.png" width="300" height="600">              
+
                   
