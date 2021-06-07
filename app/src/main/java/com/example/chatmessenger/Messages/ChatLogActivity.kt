@@ -56,7 +56,7 @@ class ChatLogActivity : AppCompatActivity() {
 
         recyclerview_chat_log.adapter = adapter
 
-        val cambtn = findViewById<ImageView>(R.id.camera_button_chat_log)
+
 
         toUser = intent.getParcelableExtra<User>(NewMessageActivity.USER_KEY)
 
@@ -71,13 +71,19 @@ class ChatLogActivity : AppCompatActivity() {
             performSendMessage()
         }
 
-       cambtn.setOnClickListener {
-           ImagePicker.with(this)
-               .crop()	    			//Crop image(Optional), Check Customization for more option
-               .compress(1024)			//Final image size will be less than 1 MB(Optional)
-               .maxResultSize(1080, 1080)	//Final image resolution will be less than 1080 x 1080(Optional)
-               .start(0)
-       }
+        camera_button_chat_log.setOnClickListener {
+            Log.d(RegisterActivity.TAG, "Try to show photo selector")
+
+
+            ImagePicker.with(this)
+                    .crop()	    			//Crop image(Optional), Check Customization for more option
+                    .compress(1024)			//Final image size will be less than 1 MB(Optional)
+                    .maxResultSize(1080, 1080)	//Final image resolution will be less than 1080 x 1080(Optional)
+                    .start(0)
+
+        }
+
+
     }
 
     var selectedPhotoUri: Uri? = null
@@ -93,12 +99,13 @@ class ChatLogActivity : AppCompatActivity() {
 
             selectedPhotoUri = data.data
 
-            val url: String = selectedPhotoUri.toString()
-            intent = Intent(this,SendImage::class.java)
-            intent.putExtra("u",url)
-//            intent.putExtra("n",toUser?.username)
-//            intent.putExtra("ruid",toUser?.uid)
-            startActivity(intent)
+//            val url: String = selectedPhotoUri.toString()
+//            intent = Intent(this,SendImage::class.java)
+//            intent.putExtra("u",url)
+////            intent.putExtra("n",toUser?.username)
+////            intent.putExtra("ruid",toUser?.uid)
+//            startActivity(intent)
+            
 
         }
         else {
@@ -112,16 +119,16 @@ class ChatLogActivity : AppCompatActivity() {
 
 
         val ref = FirebaseDatabase.getInstance().getReference("/user-messages/$fromId/$toId")
-        val type: String = "text"
+
 
         ref.addChildEventListener(object : ChildEventListener {
 
             override fun onChildAdded(p0: DataSnapshot, p1: String?) {
                 val chatMessage = p0.getValue(ChatMessage::class.java)
                 val user: FirebaseUser? = FirebaseAuth.getInstance().currentUser
-                val currentUid: String = user!!.uid
+                //val currentUid: String = user!!.uid
 
-                if(type == "text"){
+
 
                 if (chatMessage != null) {
                     Log.d(TAG, chatMessage.text)
@@ -134,22 +141,7 @@ class ChatLogActivity : AppCompatActivity() {
                     }
                 }
 
-                }else if(type == "imageView")
-                {
-                    if(currentUid == toId){
-                        textView_from_row.visibility = View.GONE
-                        textView_to_row.visibility = View.GONE
-                        imageView_from_row.visibility = View.VISIBLE
-                        Picasso.get().load(chatMessage?.text).into(imageView_from_row)
-                    }
-                    else if(currentUid == fromId)
-                    {
-                        textView_from_row.visibility = View.GONE
-                        textView_to_row.visibility = View.GONE
-                        imageView_to_row.visibility = View.VISIBLE
-                        Picasso.get().load(chatMessage?.text).into(imageView_to_row)
-                    }
-                }
+
 
                 recyclerview_chat_log.scrollToPosition(adapter.itemCount - 1)
 
