@@ -9,7 +9,7 @@ Database and cloud based Storage used - Firebase.
 #
 # Libraries used :- 
                   Kotlin Standard Library.
-                  ImagePicker - Image Editing.
+                  ImagePicker - Image Editing and camera option.
                   Picasso - Image upload and fetch from FirebaseStorage.
                   CircularImageView.
                   FirebaseAuth.
